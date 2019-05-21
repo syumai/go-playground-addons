@@ -1,0 +1,81 @@
+#wrap {
+  padding: 0;
+}
+#tabs {
+  height: 24px;
+  display: flex;
+  background-color: #ddd;
+  border-bottom: 2px #fff solid;
+  overflow-x: scroll;
+}
+#tabs::-webkit-scrollbar {
+  display: none;
+}
+#tabs .tab {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: #ccc;
+}
+#tabs .tab-button {
+  display: flex;
+  width: 20px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: #eee;
+}
+#tabs .tab-button:hover {
+  background-color: #fff;
+}
+#tabs .tab.active {
+  cursor: default;
+  background-color: #fff;
+}
+#tabs .tab .tab-title {
+  padding: 2px 0;
+  padding-left: 6px;
+}
+
+#tabs .tab .tab-delete-button {
+  cursor: pointer;
+  opacity: 0;
+  padding: 0 4px;
+  margin-right: 2px;
+}
+#tabs .tab.active .tab-delete-button {
+  opacity: 0.4;
+}
+#tabs .tab .tab-delete-button:hover {
+  opacity: 0.9;
+}
+.linedtextarea {
+  height: calc(100% - 24px) !important;
+}
+
+#code,
+#wrap > .linedtextarea:last-child {
+  display: none;
+}
+
+#codeAddon {
+  font-family: Menlo, monospace;
+  font-size: 11pt;
+
+  color: black;
+  background: inherit;
+
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  resize: none;
+  wrap: off;
+  float: right;
+}
