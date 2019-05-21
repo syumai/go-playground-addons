@@ -1,1 +1,5 @@
 node_modules
+dist/bundle.dev.js
+extension/*.js
+extension/*.css
+extension.zip

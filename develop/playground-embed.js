@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const sources = [
     'https://unpkg.com/react@16/umd/react.production.min.js',
     'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
-    '/static/bundle.js',
+    '/static/bundle.dev.js',
   ];
   for (const src of sources) {
     await new Promise(resolve => {

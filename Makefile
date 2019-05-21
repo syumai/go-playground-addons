@@ -7,3 +7,10 @@ run:
 		$(PWD)/addon.css:/app/static/addon.css -v \
 		$(PWD)/dist/bundle.js:/app/static/bundle.js \
 		syumai/playground:latest
+
+.PHONY: extension
+extension:
+	yarn build-prod
+	cp addon.css extension
+	cp dist/bundle.js extension
+	cd extension && zip -r ../extension.zip ./*
