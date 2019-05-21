@@ -7,7 +7,7 @@ Let's get awesome [Go playground](https://play.golang.org) with custom features!
 ## What's this?
 
 - Addons for Go Playground.
-- Chrome extension is available.
+- [Chrome extension](https://chrome.google.com/webstore/detail/go-playground-addons/kjhcofplemokahbgknjgabnkidaabnde) is available.
 
 ## Supported Features
 
