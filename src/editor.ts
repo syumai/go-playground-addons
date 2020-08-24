@@ -1,10 +1,10 @@
-import { Store } from 'redux';
-import { IState } from './store';
-import { Action } from './actions';
-import { concatTabs } from './helpers';
-import { codeRepo, codeAddonRepo } from './repository';
-import { Tab } from './models';
-import { handleKeys } from './editor-helpers';
+import { Store } from "redux";
+import { IState } from "./store";
+import { Action } from "./actions";
+import { concatTabs } from "./helpers";
+import { codeRepo, codeAddonRepo } from "./repository";
+import { Tab } from "./models";
+import { handleKeys } from "./editor-helpers";
 
 class Editor {
   private store: Store<IState, Action> | null = null;
@@ -14,11 +14,11 @@ class Editor {
     this.store = store;
     codeAddonRepo.save(this.activeTab.body);
 
-    const el = document.getElementById('codeAddon') as HTMLInputElement;
-    el.addEventListener('change', () => {
+    const el = document.getElementById("codeAddon") as HTMLInputElement;
+    el.addEventListener("change", () => {
       this.save();
     });
-    el.addEventListener('keydown', e => {
+    el.addEventListener("keydown", (e) => {
       handleKeys(e, () => this.save());
     });
     this.el = el;
@@ -42,7 +42,7 @@ class Editor {
 
   private get activeTab(): Tab {
     if (!this.store) {
-      return { key: '', body: '' };
+      return { key: "", body: "" };
     }
     const { tabs, activeTabIndex } = this.store.getState();
     return tabs[activeTabIndex];
@@ -53,7 +53,7 @@ class Editor {
       return;
     }
     this.store.dispatch({
-      type: 'UPDATE_TAB',
+      type: "UPDATE_TAB",
       index: this.activeTabIndex,
       key: this.activeTab.key,
       body: this.el.value,

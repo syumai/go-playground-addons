@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
-import Tab from './Tab';
-import AddTabButton from './AddTabButton';
-import { IState, useMappedState } from '../store';
+import React, { useCallback } from "react";
+import Tab from "./Tab";
+import AddTabButton from "./AddTabButton";
+import { IState, useMappedState } from "../store";
 
 const Tabs: React.FC = () => {
   const { tabCount } = useMappedState(

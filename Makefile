@@ -8,10 +8,6 @@ run:
 		$(PWD)/dist/bundle.dev.js:/app/static/bundle.dev.js \
 		syumai/playground:latest
 
-.PHONY: build
-build:
-	yarn build
-
 .PHONY: extension
 extension:
 	yarn build-prod

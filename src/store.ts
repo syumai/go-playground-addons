@@ -1,9 +1,9 @@
-import { createStore, Store } from 'redux';
-import { create } from 'redux-react-hook';
-import { Action } from './actions';
-import reducer from './reducer';
-import { Tab } from './models';
-import { splitTabs } from './helpers';
+import { createStore, Store } from "redux";
+import { create } from "redux-react-hook";
+import { Action } from "./actions";
+import reducer from "./reducer";
+import { Tab } from "./models";
+import { splitTabs } from "./helpers";
 
 export type IState = {
   tabs: Tab[];

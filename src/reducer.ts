@@ -1,26 +1,26 @@
-import { Action } from './actions';
-import { IState, INITIAL_STATE } from './store';
+import { Action } from "./actions";
+import { IState, INITIAL_STATE } from "./store";
 
 export default function reducer(state: IState = INITIAL_STATE, action: Action) {
   switch (action.type) {
-    case 'ENABLE_TABS': {
+    case "ENABLE_TABS": {
       // Unimplemented
       return state;
     }
 
-    case 'DISABLE_TABS': {
+    case "DISABLE_TABS": {
       // Unimplemented
       return state;
     }
 
-    case 'SWITCH_TAB': {
+    case "SWITCH_TAB": {
       return {
         ...state,
         activeTabIndex: action.index,
       };
     }
 
-    case 'ADD_TAB': {
+    case "ADD_TAB": {
       const tabs = [...state.tabs];
       tabs.push({
         key: action.key,
@@ -30,7 +30,7 @@ export default function reducer(state: IState = INITIAL_STATE, action: Action) {
       return { ...state, tabs, activeTabIndex };
     }
 
-    case 'UPDATE_TAB': {
+    case "UPDATE_TAB": {
       const tab = {
         ...state.tabs[action.index],
         key: action.key,
@@ -40,7 +40,7 @@ export default function reducer(state: IState = INITIAL_STATE, action: Action) {
       return state;
     }
 
-    case 'REMOVE_TAB': {
+    case "REMOVE_TAB": {
       const tabs = [...state.tabs];
       if (tabs.length === 1) {
         return state;
@@ -50,7 +50,7 @@ export default function reducer(state: IState = INITIAL_STATE, action: Action) {
       return { ...state, activeTabIndex, tabs };
     }
 
-    case 'MOVE_TAB': {
+    case "MOVE_TAB": {
       // Unimplemented
       return state;
     }

@@ -13,7 +13,7 @@ export class Repository {
     if (this.el !== null) {
       return this.el.value;
     }
-    return '';
+    return "";
   }
   save(value: string) {
     this.initEl();
@@ -23,5 +23,5 @@ export class Repository {
   }
 }
 
-export const codeRepo = new Repository('code');
-export const codeAddonRepo = new Repository('codeAddon');
+export const codeRepo = new Repository("code");
+export const codeAddonRepo = new Repository("codeAddon");

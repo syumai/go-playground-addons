@@ -1,7 +1,7 @@
 export function initDOM() {
-  const wrapper = document.getElementById('wrap') as HTMLElement;
+  const wrapper = document.getElementById("wrap") as HTMLElement;
   wrapper.insertAdjacentHTML(
-    'afterbegin',
+    "afterbegin",
     `<div id="tabs"></div>
 <textarea
   itemprop="description"
@@ -12,7 +12,7 @@ export function initDOM() {
   spellcheck="false"
 ></textarea>`
   );
-  const script = document.createElement('script');
+  const script = document.createElement("script");
   script.textContent = `
 $('#codeAddon').linedtextarea();
 $('#codeAddon').attr('wrap', 'off');

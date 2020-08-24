@@ -1,11 +1,11 @@
 module.exports = {
-  entry: './src/index.tsx',
+  entry: "./src/index.tsx",
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: [".ts", ".tsx", ".js", ".json"],
   },
 
   module: {
-    rules: [{ test: /\.tsx?$/, loader: 'awesome-typescript-loader' }],
+    rules: [{ test: /\.tsx?$/, loader: "awesome-typescript-loader" }],
   },
 };

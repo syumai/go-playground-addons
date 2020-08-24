@@ -1,21 +1,21 @@
-import React from 'react';
-import { useTabs } from '../hooks';
+import React from "react";
+import { useTabs } from "../hooks";
 
 const AddTabButton: React.FC = () => {
   const { addTab } = useTabs();
   const addTabWithPrompt = () => {
-    const key = window.prompt('Input file name (ex. example/hello.go, go.mod)');
+    const key = window.prompt("Input file name (ex. example/hello.go, go.mod)");
     if (!key) {
       return;
     }
-    let body = '';
-    if (key === 'go.mod') {
+    let body = "";
+    if (key === "go.mod") {
       body = `module play.ground
 
 // When you create "exmample/hello.go",
 // You can import package like: \`import "play.ground/example"\`.\n`;
-    } else if (key.endsWith('.go')) {
-      let packageName = 'main';
+    } else if (key.endsWith(".go")) {
+      let packageName = "main";
       const matched = key.match(/([^/]+?)\/[^/]+\.\w+$/);
       if (matched && matched[1]) {
         packageName = matched[1];
