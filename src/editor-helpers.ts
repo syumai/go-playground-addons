@@ -2,26 +2,24 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-export function handleKeys(e: KeyboardEvent, onSave: () => void) {
+export function handleKeys(e: KeyboardEvent, onSave: () => void): boolean {
   const el = e.target as HTMLInputElement;
-  if (e.keyCode === 9 && !e.ctrlKey) {
-    // tab
+  if (e.key === "Tab" && !e.ctrlKey) {
     insertTabs(el, 1);
     e.preventDefault();
     return false;
   }
-  if (e.keyCode === 13) {
-    // enter
+  if (e.key === "Enter") {
     if (e.shiftKey) {
       onSave();
-      const runBtn = document.getElementById('run') as HTMLInputElement;
+      const runBtn = document.getElementById("run") as HTMLInputElement;
       runBtn.click();
       e.preventDefault();
       return false;
     }
     if (e.ctrlKey) {
       onSave();
-      const fmtBtn = document.getElementById('fmt') as HTMLInputElement;
+      const fmtBtn = document.getElementById("fmt") as HTMLInputElement;
       fmtBtn.click();
       e.preventDefault();
     } else {
@@ -37,7 +35,7 @@ function insertTabs(el: HTMLInputElement, n: number) {
   const v = el.value;
   let u = v.substr(0, start);
   for (let i = 0; i < n; i++) {
-    u += '\t';
+    u += "\t";
   }
   u += v.substr(end);
   el.value = u;
@@ -50,9 +48,9 @@ function autoindent(el: HTMLInputElement) {
   let tabs = 0;
   while (curpos > 0) {
     curpos--;
-    if (el.value[curpos] === '\t') {
+    if (el.value[curpos] === "\t") {
       tabs++;
-    } else if (tabs > 0 || el.value[curpos] === '\n') {
+    } else if (tabs > 0 || el.value[curpos] === "\n") {
       break;
     }
   }

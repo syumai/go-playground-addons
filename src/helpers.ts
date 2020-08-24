@@ -1,10 +1,10 @@
-import { Tab } from './models';
+import { Tab } from "./models";
 
 export function splitTabs(body: string): Tab[] {
   const parts = body.split(/-- (.+?) --\n/);
   const tabMap: { [key: string]: Tab } = {};
-  if (parts[0] !== '') {
-    const key = 'main.go';
+  if (parts[0] !== "") {
+    const key = "main.go";
     const body = parts[0];
     tabMap[key] = {
       key,
@@ -13,7 +13,7 @@ export function splitTabs(body: string): Tab[] {
   }
   for (let i = 1; i < parts.length; i += 2) {
     if (parts.length === i + 1) {
-      console.error('tabs parsing error.');
+      console.error("tabs parsing error.");
       break;
     }
     const key = parts[i];
@@ -33,5 +33,5 @@ export function concatTabs(tabs: Tab[]): string {
         `-- ${key} --
 ${body}`
     )
-    .join('\n\n');
+    .join("\n\n");
 }

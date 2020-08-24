@@ -1,9 +1,9 @@
-import { useCallback, useEffect } from 'react';
-import { Tab } from './models';
-import { useDispatch, useMappedState } from './store';
-import { IState } from './store';
-import { codeAddonRepo } from './repository';
-import { editor } from './editor';
+import { useCallback, useEffect } from "react";
+import { Tab } from "./models";
+import { useDispatch, useMappedState } from "./store";
+import { IState } from "./store";
+import { codeAddonRepo } from "./repository";
+import { editor } from "./editor";
 
 export function useTabs(): {
   tabs: Tab[];
@@ -17,7 +17,7 @@ export function useTabs(): {
 
   const addTab = useCallback(
     ({ key, body }) => {
-      dispatch({ type: 'ADD_TAB', key, body });
+      dispatch({ type: "ADD_TAB", key, body });
     },
     [dispatch]
   );
@@ -53,23 +53,23 @@ export function useTab(
   const dispatch = useDispatch();
 
   const switchTab = useCallback(() => {
-    dispatch({ type: 'SWITCH_TAB', index });
+    dispatch({ type: "SWITCH_TAB", index });
   }, [dispatch, index, tab.body]);
 
   const updateTab = useCallback(
     ({ key, body }): { key: string; body: string } =>
-      dispatch({ type: 'UPDATE_TAB', index, key, body }),
+      dispatch({ type: "UPDATE_TAB", index, key, body }),
     [dispatch, index]
   );
 
-  const removeTab = useCallback(() => dispatch({ type: 'REMOVE_TAB', index }), [
+  const removeTab = useCallback(() => dispatch({ type: "REMOVE_TAB", index }), [
     dispatch,
     index,
   ]);
 
   const moveTab = useCallback(
     (toIndex: number) =>
-      dispatch({ type: 'MOVE_TAB', fromIndex: index, toIndex }),
+      dispatch({ type: "MOVE_TAB", fromIndex: index, toIndex }),
     [dispatch, index]
   );
   return { tab, switchTab, updateTab, removeTab, moveTab };
