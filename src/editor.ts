@@ -1,10 +1,13 @@
 import { Store } from "redux";
 import { IState } from "./store";
 import { Action } from "./actions";
-import { concatTabs } from "./helpers";
+import { concatTabs, splitTabs } from "./helpers";
 import { codeRepo, codeAddonRepo } from "./repository";
 import { Tab } from "./models";
 import { handleKeys } from "./editor-helpers";
+import { GoPlayground } from "@syumai/goplayground";
+
+const gp = new GoPlayground();
 
 class Editor {
   private store: Store<IState, Action> | null = null;
@@ -19,9 +22,19 @@ class Editor {
       this.save();
     });
     el.addEventListener("keydown", (e) => {
-      handleKeys(e, () => this.save());
+      handleKeys(e, async () => {
+        this.save();
+      });
+      this.handleFmt(e);
     });
     this.el = el;
+
+    const originalFmtBtn = document.getElementById("fmt") as HTMLInputElement;
+    const fmtBtn = originalFmtBtn.cloneNode(true) as HTMLInputElement;
+    originalFmtBtn.parentNode?.replaceChild(fmtBtn, originalFmtBtn);
+    fmtBtn.addEventListener("click", () => {
+      this.handleFmt();
+    });
   }
 
   private get tabs(): Tab[] {
@@ -62,10 +75,38 @@ class Editor {
   }
 
   focus() {
-    if (!this.el) {
+    this.el?.focus();
+  }
+
+  private async handleFmt(e?: KeyboardEvent) {
+    if (e !== undefined && (e.key !== "Enter" || !e.ctrlKey)) {
       return;
     }
-    this.el.focus();
+    this.save();
+    const importsInput = document.getElementById("imports") as HTMLInputElement;
+    const result = await gp.format(codeRepo.load(), importsInput.checked);
+    if (result.Error !== "") {
+      const outputContainer = document.getElementById(
+        "output"
+      ) as HTMLDivElement;
+      const pre = outputContainer.firstChild as HTMLPreElement;
+      pre.className = "error";
+      pre.textContent = result.Error;
+      return;
+    }
+    const tabs = splitTabs(result.Body);
+    tabs.forEach((tab, i) => {
+      if (!this.store) {
+        return;
+      }
+      this.store.dispatch({
+        type: "UPDATE_TAB",
+        index: i,
+        key: tab.key,
+        body: tab.body,
+      });
+      codeAddonRepo.save(this.activeTab.body);
+    });
   }
 }
 

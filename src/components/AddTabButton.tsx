@@ -12,7 +12,7 @@ const AddTabButton: React.FC = () => {
     if (key === "go.mod") {
       body = `module play.ground
 
-// When you create "exmample/hello.go",
+// When you create a file named "example/hello.go",
 // You can import package like: \`import "play.ground/example"\`.\n`;
     } else if (key.endsWith(".go")) {
       let packageName = "main";
