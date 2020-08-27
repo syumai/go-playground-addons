@@ -1,6 +1,6 @@
 {
   "name": "go-playground-addons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Addons for go-playground",
   "main": "dist/main.js",
   "repository": "https://github.com/syumai/go-playground-addons",
