@@ -27,6 +27,9 @@ export function splitTabs(body: string): Tab[] {
 }
 
 export function concatTabs(tabs: Tab[]): string {
+  if (tabs.length === 1) {
+    return tabs[0].body;
+  }
   return tabs
     .map(
       ({ key, body }) =>
