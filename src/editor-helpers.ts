@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-export function handleKeys(e: KeyboardEvent, onSave: () => void): boolean {
+export async function handleKeys(
+  e: KeyboardEvent,
+  onSave: () => void
+): Promise<boolean> {
   const el = e.target as HTMLInputElement;
   if (e.key === "Tab" && !e.ctrlKey) {
     insertTabs(el, 1);
@@ -18,9 +21,6 @@ export function handleKeys(e: KeyboardEvent, onSave: () => void): boolean {
       return false;
     }
     if (e.ctrlKey) {
-      onSave();
-      const fmtBtn = document.getElementById("fmt") as HTMLInputElement;
-      fmtBtn.click();
       e.preventDefault();
     } else {
       autoindent(el);
