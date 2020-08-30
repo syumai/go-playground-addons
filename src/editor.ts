@@ -94,6 +94,7 @@ class Editor {
       pre.textContent = result.Error;
       return;
     }
+    codeRepo.save(result.Body);
     const tabs = splitTabs(result.Body);
     tabs.forEach((tab, i) => {
       if (!this.store) {
